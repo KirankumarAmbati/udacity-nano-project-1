@@ -18,9 +18,6 @@ class BooksApp extends React.Component {
     
     this.state = {
       allBooks:[],
-      currentlyReadingBooks: [],
-      wantToReadBooks: [],
-      readBooks: [],
       filteredBooks:[]
     }
 
@@ -51,20 +48,10 @@ class BooksApp extends React.Component {
     console.log(filteredBooks)
   }
 
-  handleSelect(book, value){
-
-    console.log(book, value)
-    // switch(e.target.value) {
-    //   case 'read':
-
-    //     break;
-    //   case 'currentlyReading':
-    //     break;
-    //   case 'wantToRead':
-    //     break;
-    //   case 'none':
-    //     break;
-    // }
+  handleSelect(book, shelf){
+    console.log(book,shelf);
+    BooksAPI.update(book, shelf)
+    this.forceUpdate()
   }
 
   render() {
@@ -77,7 +64,7 @@ class BooksApp extends React.Component {
                     <h1>MyReads</h1>
                   </div>
                   <div className="list-books-content">
-                    <Library />
+                    <Library books={this.state.allBooks} handleSelect={this.handleSelect}/>
                   </div>
                   <Link to='/search'><span className="open-search">Search</span></Link>
               </div>

@@ -170,3 +170,9 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+
+.bookList {
+  display:flex;
+  justify-content: space-between;
+  flex-grow: 1
+}
