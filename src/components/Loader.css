@@ -1,0 +1,137 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+.container {
+    margin:18% 20% 25% 45%
+}
+
+.cubes, .before, .after, .groove {
+  background: #2c3e50;
+  height: 50px;
+  width: 50px;
+  margin-left: 2px;
+  margin-right: 2px;
+  -webkit-animation: load 2s infinite;
+  animation: load 2s infinite;
+  display: inline-block;
+}
+.cubes:nth-child(1), .before:nth-child(1), .after:nth-child(1), .groove:nth-child(1) {
+  -webkit-animation-delay: 0s;
+  -o-animation-delay: 0s;
+  -moz-animation-delay: 0s;
+  animation-delay: 0s;
+}
+.cubes:nth-child(2), .before:nth-child(2), .after:nth-child(2), .groove:nth-child(2) {
+  -webkit-animation-delay: 0.1s;
+  -o-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+.cubes:nth-child(3), .before:nth-child(3), .after:nth-child(3), .groove:nth-child(3) {
+  -webkit-animation-delay: 0.2s;
+  -o-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.cubes:nth-child(4), .before:nth-child(4), .after:nth-child(4), .groove:nth-child(4) {
+  -webkit-animation-delay: 0.3s;
+  -o-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.cubes:nth-child(5), .before:nth-child(5), .after:nth-child(5), .groove:nth-child(5) {
+  -webkit-animation-delay: 0.4s;
+  -o-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+.cubes:nth-child(6), .before:nth-child(6), .after:nth-child(6), .groove:nth-child(6) {
+  -webkit-animation-delay: 0.5s;
+  -o-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+.cubes:nth-child(7), .before:nth-child(7), .after:nth-child(7), .groove:nth-child(7) {
+  -webkit-animation-delay: 0.6s;
+  -o-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+.cubes:nth-child(8), .before:nth-child(8), .after:nth-child(8), .groove:nth-child(8) {
+  -webkit-animation-delay: 0.7s;
+  -o-animation-delay: 0.7s;
+  -moz-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+.cubes:nth-child(9), .before:nth-child(9), .after:nth-child(9), .groove:nth-child(9) {
+  -webkit-animation-delay: 0.8s;
+  -o-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+.cubes:nth-child(10), .before:nth-child(10), .after:nth-child(10), .groove:nth-child(10) {
+  -webkit-animation-delay: 0.9s;
+  -o-animation-delay: 0.9s;
+  -moz-animation-delay: 0.9s;
+  animation-delay: 0.9s;
+}
+
+@-webkit-keyframes load {
+  0% {
+    transform: scale(0.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.1);
+  }
+}
+@keyframes load {
+  0% {
+    transform: scale(0.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.1);
+  }
+}
+.before {
+  width: 10px;
+  height: 100px;
+  margin-top: 45px;
+}
+
+.after {
+  width: 100px;
+  height: 10px;
+}
+
+@-webkit-keyframes load2 {
+  50% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes load2 {
+  50% {
+    transform: rotate(360deg);
+  }
+}
+.first {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 60px;
+  color: #2c3e50;
+}
+
+a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-family: 'Lobster', cursive;
+  font-size: 40px;
+  opacity: 0.6;
+}
+a:hover {
+  opacity: 1;
+}

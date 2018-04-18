@@ -3,6 +3,7 @@ import './App.css'
 import Library from './components/Library'
 import SearchPage from './components/SearchPage'
 import * as BooksAPI from './BooksAPI'
+import Loader from './components/Loader'
 
 import {
   Route,
@@ -17,12 +18,10 @@ class BooksApp extends React.Component {
     // console.log(BooksAPI.getAll().then(books => console.log(books)))
     
     this.state = {
-      allBooks:[],
-      filteredBooks:[]
+      allBooks:[]
     }
 
     this.handleSelect = this.handleSelect.bind(this)
-    this.handleSearch = this.handleSearch.bind(this)
   }
 
   componentWillMount(){
@@ -35,48 +34,56 @@ class BooksApp extends React.Component {
     
   }
 
-  handleSearch(e) {
-    // let filteredBooks = this.state.allBooks.filter(book => (
-    //   book.title.includes(e.target.value) ||
-    //   book.authors.map(author => (
-    //     console.log(author.includes(e.target.value))
-    //   ))
-    // ))
-    console.log(e.target.value)
-
-    let filteredBooks = BooksAPI.search(e.target.value)
-    console.log(filteredBooks)
-  }
-
   handleSelect(book, shelf){
-    console.log(book,shelf);
-    BooksAPI.update(book, shelf)
-    this.forceUpdate()
+    book.shelf = shelf
+    console.log(book,shelf)
+    BooksAPI.update(book, shelf).then(res => {
+      this.setState( (prevState) => ({
+        allBooks: [...prevState.allBooks.filter(i=>i.id!==book.id),book]
+      }))
+    })
+    
+    BooksAPI.getAll().then(books => (
+      this.setState({
+        allBooks: books,
+        filteredBooks:books
+      })
+    ))
   }
 
   render() {
+    console.log('logs', this.state.allBooks)
     return (
-      <div className="app">
-          <div>
-              <Route exact path='/' render={ () =>(
-                <div className="list-books">
-                  <div className="list-books-title">
-                    <h1>MyReads</h1>
-                  </div>
-                  <div className="list-books-content">
-                    <Library books={this.state.allBooks} handleSelect={this.handleSelect}/>
-                  </div>
-                  <Link to='/search'><span className="open-search">Search</span></Link>
-              </div>
-              )} />
+        <div> 
+          {
+            this.state.allBooks.length > 0 ? (
+              <div className="app">
+              <div>
+                  <Route exact path='/' render={ () =>(
+                    <div className="list-books">
+                      <div className="list-books-title">
+                        <h1>MyReads</h1>
+                      </div>
+                      <div className="list-books-content">
+                        <Library books={this.state.allBooks} handleSelect={this.handleSelect}/>
+                      </div>
+                      <Link to='/search'><span className="open-search">Search</span></Link>
+                    </div>)}
+                  />
           </div>
           <Route path='/search' render={() => (
                 <SearchPage 
-                  books={this.state.filteredBooks} 
+                  booksOnShelf={this.state.allBooks}
                   handleSearch={this.handleSearch} 
                   handleSelect={this.handleSelect}
                 />
           )} />
+          </div>
+            ):
+            (
+              <Loader />
+            )
+          }
       </div>
     )
   }

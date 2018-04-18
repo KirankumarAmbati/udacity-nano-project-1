@@ -6,7 +6,7 @@ class BookShelf extends React.Component {
     render() {
         let books = this.props.books
 
-        console.log(books)
+        console.log('B.S', books)
 
         return(
             <div>
@@ -14,7 +14,7 @@ class BookShelf extends React.Component {
                   <h2 className="bookshelf-title">{this.props.title}</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                    {books ? books.map(i => (
+                    {books.length >0 ? books.map(i => (
                         <li key={i.id}><Book book={i} handleSelect={this.props.handleSelect} /></li>
                     )):"Wait for one !!"}
                     </ol>
