@@ -2,27 +2,23 @@ import React from 'react'
 import Book from './Book'
 import '../App.css'
 
-class BookShelf extends React.Component {
-    render() {
-        let books = this.props.books
+function BookShelf(props) {
+    let books = props.books
 
-        console.log('B.S', books)
-
-        return(
-            <div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">{this.props.title}</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                    {books.length >0 ? books.map(i => (
-                        <li key={i.id}><Book book={i} handleSelect={this.props.handleSelect} /></li>
-                    )):"Wait for one !!"}
-                    </ol>
-                  </div>
+    return(
+        <div>
+            <div className="bookshelf">
+                <h2 className="bookshelf-title">{props.title}</h2>
+                <div className="bookshelf-books">
+                <ol className="books-grid">
+                {books.length >0 ? books.map(book => (
+                    <li key={book.id}><Book book={book} handleSelect={props.handleSelect} /></li>
+                )):"Wait for one !!"}
+                </ol>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default BookShelf

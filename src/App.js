@@ -4,7 +4,6 @@ import Library from './components/Library'
 import SearchPage from './components/SearchPage'
 import * as BooksAPI from './BooksAPI'
 import Loader from './components/Loader'
-
 import {
   Route,
   Link,
@@ -14,9 +13,7 @@ import {
 class BooksApp extends React.Component {
   constructor(){
     super()
-    
-    // console.log(BooksAPI.getAll().then(books => console.log(books)))
-    
+
     this.state = {
       allBooks:[]
     }
@@ -27,8 +24,7 @@ class BooksApp extends React.Component {
   componentWillMount(){
     BooksAPI.getAll().then(books => (
       this.setState({
-        allBooks: books,
-        filteredBooks:books
+        allBooks: books
       })
     ))
     
@@ -45,46 +41,50 @@ class BooksApp extends React.Component {
     
     BooksAPI.getAll().then(books => (
       this.setState({
-        allBooks: books,
-        filteredBooks:books
+        allBooks: books
       })
     ))
   }
 
   render() {
-    console.log('logs', this.state.allBooks)
     return (
         <div> 
           {
             this.state.allBooks.length > 0 ? (
               <div className="app">
-              <div>
-                  <Route exact path='/' render={ () =>(
-                    <div className="list-books">
-                      <div className="list-books-title">
-                        <h1>MyReads</h1>
-                      </div>
-                      <div className="list-books-content">
-                        <Library books={this.state.allBooks} handleSelect={this.handleSelect}/>
-                      </div>
-                      <Link to='/search'><span className="open-search">Search</span></Link>
-                    </div>)}
-                  />
-          </div>
-          <Route path='/search' render={() => (
-                <SearchPage 
-                  booksOnShelf={this.state.allBooks}
-                  handleSearch={this.handleSearch} 
-                  handleSelect={this.handleSelect}
-                />
-          )} />
-          </div>
+                <div>
+                    <Route 
+                      exact path='/'
+                      render={ () =>(
+                        <div className="list-books">
+
+                          <div className="list-books-title">
+                            <h1>MyReads</h1>
+                          </div>
+
+                          <div className="list-books-content">
+                            <Library books={this.state.allBooks} handleSelect={this.handleSelect}/>
+                          </div>
+
+                          <Link to='/search'><span className="open-search">Search</span></Link>
+
+                        </div>)}
+                    />
+                </div>
+                <Route path='/search' render={() => (
+                      <SearchPage 
+                        booksOnShelf={this.state.allBooks}
+                        handleSearch={this.handleSearch} 
+                        handleSelect={this.handleSelect}
+                      />
+                )} />
+              </div>
             ):
             (
               <Loader />
             )
           }
-      </div>
+        </div>
     )
   }
 }
