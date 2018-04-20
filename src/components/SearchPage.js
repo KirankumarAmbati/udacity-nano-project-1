@@ -6,7 +6,7 @@ import {
 
 import App from '../App'
 import '../App.css'
-import { throttle } from "throttle-debounce"
+import { throttle } from 'throttle-debounce'
 import * as BooksAPI from '../BooksAPI'
 
 class SearchPage extends React.Component {
@@ -36,7 +36,7 @@ class SearchPage extends React.Component {
             })
 
             this.setState(() => ({
-                filteredBooks:this.state.searchResults && this.state.searchResults.map(result => {
+                filteredBooks:this.state.searchResults.length > 0 && this.state.searchResults.map(result => {
                     let requiredBook = allBooks && allBooks.find(book => book.id === result.id)
 
                     if(requiredBook){

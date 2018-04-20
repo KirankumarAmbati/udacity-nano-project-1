@@ -3,7 +3,6 @@ import BookShelf from './BookShelf'
 import PropTypes from 'prop-types'
 
 function Library(props) {
-
     function _filterBooks(shelf){
         let filteredBooks = props.books.filter((book) => (
             book.shelf === shelf
@@ -25,4 +24,5 @@ Library.PropTypes = {
     books:PropTypes.array.isRequired,
     handleSelect:PropTypes.func.isRequired
 }
+
 export default Library

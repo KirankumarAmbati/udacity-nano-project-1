@@ -38,12 +38,6 @@ class BooksApp extends React.Component {
         allBooks: [...prevState.allBooks.filter(i=>i.id!==book.id),book]
       }))
     })
-    
-    BooksAPI.getAll().then(books => (
-      this.setState({
-        allBooks: books
-      })
-    ))
   }
 
   render() {

@@ -23,7 +23,7 @@ function BookShelf(props) {
 }
 
 Book.propTypes = {
-    books:PropTypes.array.isRequired,
+    books:PropTypes.array,
     handleSelect:PropTypes.func.isRequired
 }
 
