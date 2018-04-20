@@ -32,7 +32,6 @@ class BooksApp extends React.Component {
 
   handleSelect(book, shelf){
     book.shelf = shelf
-    console.log(book,shelf)
     BooksAPI.update(book, shelf).then(res => {
       this.setState( (prevState) => ({
         allBooks: [...prevState.allBooks.filter(i=>i.id!==book.id),book]
