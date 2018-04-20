@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 function Book(props){
 
@@ -22,6 +23,11 @@ function Book(props){
         <div className="book-authors">{book.authors}</div>
       </div>
   )
+}
+
+Book.propTypes = {
+  book:PropTypes.array.isRequired,
+  handleSelect:PropTypes.func.isRequired
 }
 
 export default Book

@@ -1,5 +1,6 @@
 import React from 'react'
 import BookShelf from './BookShelf'
+import PropTypes from 'prop-types'
 
 function Library(props) {
 
@@ -20,4 +21,8 @@ function Library(props) {
     )
 }
 
+Library.PropTypes = {
+    books:PropTypes.array.isRequired,
+    handleSelect:PropTypes.func.isRequired
+}
 export default Library
