@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css'
 import Library from './components/Library'
 import SearchPage from './components/SearchPage'
 import * as BooksAPI from './BooksAPI'
@@ -8,6 +7,7 @@ import {
   Route,
   Link,
 } from 'react-router-dom'
+import './App.css'
 
 
 class BooksApp extends React.Component {
@@ -15,7 +15,7 @@ class BooksApp extends React.Component {
     super()
 
     this.state = {
-      allBooks:[]
+      books:[]
     }
 
     this.handleSelect = this.handleSelect.bind(this)
@@ -24,7 +24,7 @@ class BooksApp extends React.Component {
   componentWillMount(){
     BooksAPI.getAll().then(books => (
       this.setState({
-        allBooks: books
+        books
       })
     ))
     
@@ -34,7 +34,7 @@ class BooksApp extends React.Component {
     book.shelf = shelf
     BooksAPI.update(book, shelf).then(res => {
       this.setState( (prevState) => ({
-        allBooks: [...prevState.allBooks.filter(i=>i.id!==book.id),book]
+        books: [...prevState.books.filter(i=>i.id!==book.id),book]
       }))
     })
   }
@@ -43,7 +43,7 @@ class BooksApp extends React.Component {
     return (
         <div> 
           {
-            this.state.allBooks.length > 0 ? (
+            this.state.books.length > 0 ? (
               <div className="app">
                 <div>
                     <Route 
@@ -56,7 +56,7 @@ class BooksApp extends React.Component {
                           </div>
 
                           <div className="list-books-content">
-                            <Library books={this.state.allBooks} handleSelect={this.handleSelect}/>
+                            <Library books={this.state.books} handleSelect={this.handleSelect}/>
                           </div>
 
                           <Link to='/search'><span className="open-search">Search</span></Link>
@@ -66,7 +66,7 @@ class BooksApp extends React.Component {
                 </div>
                 <Route path='/search' render={() => (
                       <SearchPage 
-                        booksOnShelf={this.state.allBooks}
+                        booksOnShelf={this.state.books}
                         handleSearch={this.handleSearch} 
                         handleSelect={this.handleSelect}
                       />
