@@ -13,9 +13,9 @@ function Library(props) {
 
     return(
         <div className="list-books-content">
-            <BookShelf title={"Currently Reading"} books = {_filterBooks('currentlyReading')} handleSelect={props.handleSelect}/>
-            <BookShelf title={"Want to Read"} books = {_filterBooks('wantToRead')} handleSelect={props.handleSelect}/>
-            <BookShelf title={"Read"} books = {_filterBooks('read')} handleSelect={props.handleSelect}/>
+            <BookShelf title={"Currently Reading"} books={_filterBooks('currentlyReading')} handleSelect={props.handleSelect}/>
+            <BookShelf title={"Want to Read"} books={_filterBooks('wantToRead')} handleSelect={props.handleSelect}/>
+            <BookShelf title={"Read"} books={_filterBooks('read')} handleSelect={props.handleSelect}/>
         </div>
     )
 }
